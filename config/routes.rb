@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
  
 
-  get 'users/new'
 
-  get 'users/create'
-
+  devise_for :users
   resources :items
 
   get 'about' => 'welcome#about'
