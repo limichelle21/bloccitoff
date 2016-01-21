@@ -12,16 +12,18 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new
-    @item.body = params[:item][:body]
+
+    @item = current_user.items.build(item_params)
+    @new_item = Item.new
 
     if @item.save
       flash[:notice] = "Item was saved."
-      redirect_to @item
+      redirect_to @items
     else
       flash.now[:alert] = "There was an error saving the item."
       render :new
     end
+
   end
 
   def update
@@ -29,4 +31,11 @@ class ItemsController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:body, :completed)
+  end
+
 end
