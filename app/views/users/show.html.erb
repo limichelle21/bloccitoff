@@ -19,4 +19,12 @@
 </div>
 
 <h3>To Do Items</h3>
-<%= render @user.items %>
+	<% @items.each do |item| %>
+		<%= render partial: 'items/item', locals: { item: @item } %>
+	<% end %>
+
+
+<% if current_user? %>
+	<h3>Add New To-Do Item</h3>
+		<%= render partial: 'items/form', locals: { item: @item } %>
+	<% end %>

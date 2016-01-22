@@ -16,4 +16,8 @@ module RandomData
 		letters[0,rand(3..8)].join
 	end
 
+	def random_boolean
+		[true, false].sample
+	end
+
 end

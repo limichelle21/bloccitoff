@@ -6,4 +6,5 @@ class UsersController < ApplicationController
   	@new_item = Item.new
   	@items = @user.items
   end
+
 end

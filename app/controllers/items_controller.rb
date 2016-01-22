@@ -1,15 +1,15 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
+ # def index
+  #  @items = Item.all
+  #end
 
-  def new
-    @item = Item.new
-  end
+  #def new
+   # @item = Item.new
+  #end
 
-  def show
-    @item = Item.find(params[:id])
-  end
+  #def show
+   # @item = Item.find(params[:id])
+  #end
 
   def create
 
@@ -26,11 +26,11 @@ class ItemsController < ApplicationController
 
   end
 
-  def update
-  end
+  #def update
+  #end
 
-  def destroy
-  end
+  #def destroy
+  #end
 
   private
 
