@@ -1,29 +1,29 @@
 class ItemsController < ApplicationController
- # def index
-  #  @items = Item.all
-  #end
+  def index
+    @items = Item.all
+  end
 
-  #def new
-   # @item = Item.new
-  #end
+  def new
+    @user = current_user
+    @item = @user.items.build
+  end
 
-  #def show
-   # @item = Item.find(params[:id])
-  #end
+  def show
+    @item = Item.find(params[:id])
+  end
 
   def create
-
-    @item = current_user.items.build(item_params)
+    @user = current_user
+    @item = @user.items.build(params[:user])
     @new_item = Item.new
 
     if @item.save
       flash[:notice] = "Item was saved."
-      redirect_to @items
+      redirect_to user_path(@user)
     else
       flash.now[:alert] = "There was an error saving the item."
       render :new
     end
-
   end
 
   #def update

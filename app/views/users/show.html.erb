@@ -4,14 +4,14 @@
 			<br/>
 			<% avatar_url = @user.avatar_url(128) %>
 			<% if avatar_url %>
-			<div class="media-left">
-				<%= image_tag avatar_url, class: 'media-object' %>
-			</div>
+				<div class="media-left">
+					<%= image_tag avatar_url, class: 'media-object' %>
+				</div>
 			<% end %>
 			<div class="media-body">
 				<h2 class="media-heading"><%= @user.name %></h2>
 				<medium>
-					<%= pluralize(@user.items.count, 'item') %>
+					<%= pluralize(@user.items.count, 'task') %>
 				</medium>
 			</div>	
 		</div>		
@@ -20,11 +20,8 @@
 
 <h3>To Do Items</h3>
 	<% @items.each do |item| %>
-		<%= render partial: 'items/item', locals: { item: @item } %>
+		<%= render partial: 'items/item', locals: { user: @user, item: item } %>
 	<% end %>
 
-
-<% if current_user? %>
-	<h3>Add New To-Do Item</h3>
-		<%= render partial: 'items/form', locals: { item: @item } %>
-	<% end %>
+<h3>Add New To-Do Item</h3>
+	<%= render partial: 'items/form', locals: { user: @user, item: Item.new } %>
