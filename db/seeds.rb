@@ -1,9 +1,20 @@
 include RandomData
 
 10.times do 
+	user = User.create!(
+		name: RandomData.random_name,
+		email: RandomData.random_email,
+		password: RandomData.random_sentence
+		)
+end
+
+users = User.all
+
+10.times do 
 	Item.create!(
 		body: RandomData.random_sentence,
 		completed: RandomData.random_boolean,
+		user: users.sample
 		)
 end
 
@@ -14,15 +25,6 @@ items = Item.all
 #user.confirm!
 #user.save!
 
-10.times do 
-	user = User.create!(
-		name: RandomData.random_name,
-		email: RandomData.random_email,
-		password: RandomData.random_sentence
-		)
-end
-
-users = User.all
 
 puts "Seed finished."
 puts "#{Item.count} items created"

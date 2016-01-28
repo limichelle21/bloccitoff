@@ -26,11 +26,11 @@ class ItemsController < ApplicationController
     end
   end
 
-  #def update
-  #end
+  def update
+  end
 
-  #def destroy
-  #end
+  def destroy
+  end
 
   private
 

@@ -1,11 +1,9 @@
-<%= form_for [item] do |f| %>
 
-	<%= form_group_tag(item.errors[:body]) do %>
+<%= form_for [user, item] do |f| %>
+
+	<div class="form-group">
 		<%= f.label :body %>
 		<%= f.text_field :body, rows: 2, class: 'form-control', placeholder: "Enter to-do list item." %>
-	   <% end %>
-	
-	<div class="form-group">
 		<%= f.submit "Save Item", class: 'btn btn-success' %>
 	</div>
 
