@@ -5,7 +5,7 @@
 			<div class="media-body">
 				<h2 class="media-heading"><%= current_user.name %></h2>
 				<medium>
-					<%= pluralize(current_user.items.count, 'task') %>
+					<div class='js-items-count'><%= pluralize(current_user.items.count, 'item') %></div>
 				</medium>
 			</div>	
 		</div>		
@@ -13,10 +13,7 @@
 </div>
 
 <h3>To Do Items</h3>
-	
 	<%= render partial: 'items/item', locals: { item: @item, user: current_user } %>
-	
-
 
 <h3>Add New To-Do Item</h3>
 <% if current_user %>

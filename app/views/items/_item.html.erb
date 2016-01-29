@@ -1,25 +1,29 @@
+
 <div class="media">
 	<div class="media-body">
-	
-		
-				<div class="item col-md-11">
-					<% @user.items.each do |item| %>
-					<li class="item-list col-md-8">
-						<%= item.body %>
-					</li>
+		<div class="table-responsive">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>Days Left</th>
+						<th>Completed</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%= content_tag :div, class: 'media', id: "item-#{@item.id}" do %>
+						<% @user.items.each do |item| %> <br/>
+						<tr>
+							<td><%= item.body %></td>
+							<td>5 days</td>
+							<td><%= link_to "", user_item_path({user_id: current_user.id, id: item.id}), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></td>
+						<% end %>
 					<% end %>
-				</div>
-			
-
-			<div class="time-left col-md-3">
-			</div>
-		
-		<div class-"delete col-md-12">
+					</tr>
+				</tbody>
+			</table>
 		</div>
-
-
-
 	</div>
-
 </div>
+
 
