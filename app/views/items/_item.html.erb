@@ -16,7 +16,7 @@
 						<%= content_tag :td, class: 'media', id: "item-#{item.id}" do %>
 						<tr>
 							<td><%= item.body %></td>
-							<td>5 days</td>
+							<td><%= item.days_left %> days left </td>
 							<td><%= link_to "", user_item_path({user_id: current_user.id, id: item.id}), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></td>
 						<% end %>
 						<% end %>
