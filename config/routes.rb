@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'about' => 'welcome#about'
 
   devise_for :users
-    root to: "users#show"
+    root to: "welcome#index" || "users#show"
 
   # resources :users, only: [:show] 
 

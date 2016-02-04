@@ -1,21 +1,20 @@
 class ItemsController < ApplicationController
-  def index
-    @items = Item.all
-  end
+  # def index
+  #   @items = Item.all
+  # end
 
   def new
-    @user = current_user
-    @item = @user.items.build
+    @item = Item.new
   end
 
-  def show
-    @item = Item.find(params[:id])
-  end
+  # def show
+  #   @item = Item.find(params[:id])
+  # end
 
   def create
     @user = current_user
-    @item = @user.items.build(params[:user])
-    @new_item = Item.new
+    @item = @user.items.build(item_params)
+    
 
     if @item.save
       flash[:notice] = "Item was saved."
@@ -26,11 +25,11 @@ class ItemsController < ApplicationController
     end
   end
 
-  def update
-  end
+  # def update
+  # end
 
-  def destroy
-  end
+  # def destroy
+  # end
 
   private
 

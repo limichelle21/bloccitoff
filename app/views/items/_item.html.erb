@@ -1,12 +1,24 @@
 <div class="media">
 	<div class="media-body">
-		<h4 class="media-heading">
-			<%= link_to item.body, item_path(item) %>
-		</h4>
-		<small>
-			posted <%= time_ago_in_words(item.created_at) %> 
-			<!-- days_ago_in_words? -->
-		</small>
+	
+		
+				<div class="item col-md-11">
+					<% @user.items.each do |item| %>
+					<li class="item-list col-md-8">
+						<%= item.body %>
+					</li>
+					<% end %>
+				</div>
+			
+
+			<div class="time-left col-md-3">
+			</div>
+		
+		<div class-"delete col-md-12">
+		</div>
+
+
+
 	</div>
 
 </div>

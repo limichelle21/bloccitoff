@@ -13,7 +13,9 @@
 </div>
 
 <h3>To Do Items</h3>
-	<%= render current_user.items %>
+	
+	<%= render partial: 'items/item', locals: { item: @item, user: current_user } %>
+	
 
 
 <h3>Add New To-Do Item</h3>
