@@ -1,18 +1,19 @@
+include Faker
 include RandomData
 
-10.times do 
+20.times do 
 	user = User.create!(
-		name: RandomData.random_name,
-		email: RandomData.random_email,
-		password: RandomData.random_sentence
+		name: Faker::Name.name,
+		email: Faker::Internet.email,
+		password: Faker::Internet.password(10,20)
 		)
 end
 
 users = User.all
 
-10.times do 
+50.times do 
 	Item.create!(
-		body: RandomData.random_sentence,
+		body: Faker::Lorem.sentence,
 		completed: RandomData.random_boolean,
 		user: users.sample
 		)
