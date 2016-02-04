@@ -8,5 +8,6 @@ class Item < ActiveRecord::Base
 	validates :user, presence: true
 	
 
+
 end
 
