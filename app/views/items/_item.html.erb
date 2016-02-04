@@ -12,13 +12,13 @@
 				</thead>
 				<tbody>
 					<% @user.items.each do |item| %> <br/>
-						<%= content_tag :div, class: 'media', id: "item-#{item.id}" do %>
-						<tr>
+				
+						<tr id="item-<%= item.id %>">
 							<td><%= item.body %></td>
 							<td>5 days</td>
 							<td><%= link_to "", user_item_path({user_id: current_user.id, id: item.id}), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></td>
 						</tr>
-						<% end %>
+					
 					<% end %>
 				</tbody>
 			</table>
