@@ -1,5 +1,6 @@
 require 'rails_helper'
 include RandomData
+include Devise::TestHelpers
 
 RSpec.describe ItemsController, type: :controller do
 
@@ -58,17 +59,20 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "POST #create" do
     it "increases the number of Item by 1" do 
+      sign_in(my_user)
       expect{post :create, user_id: my_user.id, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}}.to change(Item,:count).by(1)
     end 
 
     it "assigns the new item to @item" do 
+      sign_in(my_user)
       post :create, user_id: my_user.id, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}
       expect(assigns(:item)).to eq Item.last
     end
 
     it "redirects to the new item" do 
+      sign_in(my_user)
       post :create, user_id: my_user.id, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}
-      expect(response).to redirect_to Item.last
+      expect(response).to redirect_to user_path(my_user.id)
     end
   end
 
