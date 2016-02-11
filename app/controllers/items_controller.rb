@@ -1,5 +1,7 @@
 class ItemsController < ApplicationController
+
   before_filter :set_fake_flash
+
   # def index
   #   @items = Item.all
   # end
@@ -15,14 +17,13 @@ class ItemsController < ApplicationController
   def create
     @user = current_user
     @item = @user.items.build(item_params)
-    
 
     if @item.save
-      flash[:notice] = "Item was saved."      
+      flash[:notice] = "Item was saved."
     else
       flash.now[:alert] = "There was an error saving the item."
     end
-    redirect_to user_path(@user)
+     redirect_to user_path(@user)
   end
 
   # def update

@@ -23,6 +23,8 @@ end
 
 gem 'bootstrap-sass'
 
+gem 'whenever', :require => false 
+
 # Use Devise for authentication
 gem 'devise'
 

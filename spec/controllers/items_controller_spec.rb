@@ -1,9 +1,12 @@
 require 'rails_helper'
 include RandomData
+include Devise::TestHelpers
 
 RSpec.describe ItemsController, type: :controller do
 
   let(:my_item) { Item.create!(body: RandomData.random_sentence, completed: random_boolean = [true, false].sample) }
+  let(:my_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "orangeandapple", password_confirmation: "orangeandapple") }
+
 
 
   # describe "GET #index" do
@@ -56,17 +59,20 @@ RSpec.describe ItemsController, type: :controller do
 
   describe "POST #create" do
     it "increases the number of Item by 1" do 
-      expect{post :create, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}}.to change(Item,:count).by(1)
+      sign_in(my_user)
+      expect{post :create, user_id: my_user.id, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}}.to change(Item,:count).by(1)
     end 
 
     it "assigns the new item to @item" do 
-      post :create, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}
+      sign_in(my_user)
+      post :create, user_id: my_user.id, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}
       expect(assigns(:item)).to eq Item.last
     end
 
     it "redirects to the new item" do 
-      post :create, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}
-      expect(response).to redirect_to Item.last
+      sign_in(my_user)
+      post :create, user_id: my_user.id, item: {body: RandomData.random_sentence, completed: random_boolean = [true, false].sample}
+      expect(response).to redirect_to user_path(my_user.id)
     end
   end
 
