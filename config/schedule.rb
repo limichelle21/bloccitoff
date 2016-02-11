@@ -21,8 +21,8 @@
 
 set :environment, 'development'
 
-every 1.day, :at => '12:00 am' do 
-	rake "rake todo:delete_items"
+every 5.minutes do 
+	rake "todo:delete_items"
 end
 
 

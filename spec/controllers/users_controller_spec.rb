@@ -2,18 +2,13 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-	let(:new_user_attributes) do 
-		{ 
-			name: "Orange",
-			email: "orange@bloc.io",
-			password: "orange",
-			password_confirmation: "orange"
-		}
-	end
+let(:my_user) { User.create!(name: RandomData.random_name, email: RandomData.random_email, password: "orangeandapple", password_confirmation: "orangeandapple") }
+
 
   describe "GET #show" do
     it "returns http success" do
-      get :show
+   	  sign_in(my_user)
+      get :show, id: my_user.id
       expect(response).to have_http_status(:success)
     end
   end
