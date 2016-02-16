@@ -17,12 +17,10 @@
 								<td><%= item.days_left %> days left </td>
 								<td><%= link_to "", user_item_path({user_id: current_user.id, id: item.id}), method: :delete, remote: true, class: 'glyphicon glyphicon-ok' %></td>
 							<% end %>
-						<% end %>
+						
 					</tr>
 				</tbody>
 			</table>
 		</div>
 	</div>
 </div>
-
-
